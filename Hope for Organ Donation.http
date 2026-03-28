@@ -1,0 +1,6 @@
+@Hope_for_Organ_Donation_HostAddress = http://localhost:5093
+
+GET {{Hope_for_Organ_Donation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

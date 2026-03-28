@@ -1,0 +1,117 @@
+[
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Getdoner",
+    "RelativePath": "api/DonerControllers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Adddoner",
+    "RelativePath": "api/DonerControllers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doner",
+        "Type": "Hope_for_Organ_Donation.Model.Doner",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Updatedoner",
+    "RelativePath": "api/DonerControllers",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "bloadtype",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "age",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "organtype",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Getdoner",
+    "RelativePath": "api/DonerControllers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "UpdatedonerPatch",
+    "RelativePath": "api/DonerControllers/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doner",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Deletedoner",
+    "RelativePath": "api/DonerControllers/id",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
