@@ -113,5 +113,42 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.HospitalController",
+    "Method": "Login",
+    "RelativePath": "api/Hospital/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.HospitalController",
+    "Method": "Register",
+    "RelativePath": "api/Hospital/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hospital",
+        "Type": "Hope_for_Organ_Donation.Model.Hospital",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

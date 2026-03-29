@@ -4,6 +4,7 @@ using Hope_for_Organ_Donation.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hope_for_Organ_Donation.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260329133346_AddDonerRegisterupdate")]
+    partial class AddDonerRegisterupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,16 +41,13 @@ namespace Hope_for_Organ_Donation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DonationName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NationalIDNumber")
                         .IsRequired()
@@ -65,8 +65,6 @@ namespace Hope_for_Organ_Donation.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("DonationId");
-
-                    b.HasIndex("HospitalId");
 
                     b.ToTable("Donations");
                 });
@@ -167,17 +165,6 @@ namespace Hope_for_Organ_Donation.Migrations
                     b.HasKey("LicenseNumber");
 
                     b.ToTable("Hospitals");
-                });
-
-            modelBuilder.Entity("Hope_for_Organ_Donation.Model.Donation", b =>
-                {
-                    b.HasOne("Hope_for_Organ_Donation.Model.Hospital", "Hospital")
-                        .WithMany()
-                        .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hospital");
                 });
 #pragma warning restore 612, 618
         }

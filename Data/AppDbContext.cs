@@ -10,6 +10,10 @@ namespace Hope_for_Organ_Donation.Data
         }
         public DbSet<Doner> Doners { get; set; }
         public DbSet<Donation> Donations { get; set; }
+        public DbSet<Hospital> Hospitals { get; set; }
+        public DbSet<DonerRegister> DonerRegisters { get; set; }
+
+
 
 
     }

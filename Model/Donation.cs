@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hope_for_Organ_Donation.Model
 {
@@ -7,7 +8,7 @@ namespace Hope_for_Organ_Donation.Model
         [Key]
         public int DonationId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string DonationName { get; set; }
         [Required]
         public string BloodType { get; set; }
         [Required]
@@ -21,5 +22,8 @@ namespace Hope_for_Organ_Donation.Model
         [Required]
         public string OrganType { get; set; }
         public DateTime RegistrationDate { get; set; }
+        [ForeignKey("Hospital")]
+        public int HospitalId { get; set; }
+        public Hospital Hospital { get; set; }
     }
 }

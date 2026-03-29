@@ -4,6 +4,7 @@ using Hope_for_Organ_Donation.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hope_for_Organ_Donation.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260329124839_AddHospitalTable")]
+    partial class AddHospitalTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,16 +41,13 @@ namespace Hope_for_Organ_Donation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DonationName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NationalIDNumber")
                         .IsRequired()
@@ -65,8 +65,6 @@ namespace Hope_for_Organ_Donation.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("DonationId");
-
-                    b.HasIndex("HospitalId");
 
                     b.ToTable("Donations");
                 });
@@ -115,31 +113,6 @@ namespace Hope_for_Organ_Donation.Migrations
                     b.ToTable("Doners");
                 });
 
-            modelBuilder.Entity("Hope_for_Organ_Donation.Model.DonerRegister", b =>
-                {
-                    b.Property<int>("DonerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DonerId"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DonerId");
-
-                    b.ToTable("DonerRegisters");
-                });
-
             modelBuilder.Entity("Hope_for_Organ_Donation.Model.Hospital", b =>
                 {
                     b.Property<int>("LicenseNumber")
@@ -167,17 +140,6 @@ namespace Hope_for_Organ_Donation.Migrations
                     b.HasKey("LicenseNumber");
 
                     b.ToTable("Hospitals");
-                });
-
-            modelBuilder.Entity("Hope_for_Organ_Donation.Model.Donation", b =>
-                {
-                    b.HasOne("Hope_for_Organ_Donation.Model.Hospital", "Hospital")
-                        .WithMany()
-                        .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hospital");
                 });
 #pragma warning restore 612, 618
         }
