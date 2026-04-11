@@ -6,21 +6,16 @@ namespace Hope_for_Organ_Donation.Model
     {
         [Key]
         public int DonerId { get; set; }
+        public string UserId { get; set; } = null!;
+        public AppUser User { get; set; } = null!;
         [Required]
-        public string Name { get; set; }
+        public string BloodType { get; set; } = null!;
         [Required]
-        public string BloodType { get; set; }
+        public string Address { get; set; } = null!;
         [Required]
-        public string Email { get; set; }
+        public string NationalIDNumber { get; set; } = null!;
         [Required]
-        public string PhoneNumber { get; set; }
-        [Required]
-        public string Address { get; set; }
-        [Required]
-        public string NationalIDNumber { get; set; }
-        [Required]
-        public string OrganType { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public string OrganType { get; set; } = null!;
 
     }
 }

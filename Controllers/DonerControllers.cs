@@ -38,7 +38,6 @@ namespace Hope_for_Organ_Donation.Controllers
         [HttpPost]
         public async Task<IActionResult> Adddoner([FromBody] Doner doner)
         {
-            doner.RegistrationDate = DateTime.Now;
 
             await _db.Doners.AddAsync(doner);
             await _db.SaveChangesAsync();
@@ -46,14 +45,15 @@ namespace Hope_for_Organ_Donation.Controllers
             return Ok(doner);
         }
         [HttpPut]
-        public async Task<IActionResult> Updatedoner(int id, string name, string bloadtype, int age, string organtype)
+        public async Task<IActionResult> Updatedoner(int donerid, string name, string bloadtype, string phonenumber,string adress,string nationalidnumber,string organtype)
         {
-            var data = await _db.Doners.FindAsync(id);
+            var data = await _db.Doners.FindAsync(donerid);
             if (data == null)
             {
-                return NotFound($"Doner Id {id} not exists");
+                return NotFound($"Doner Id {donerid} not exists");
             }
-            data.Name = name;
+            data.Address= adress;
+            data.NationalIDNumber = nationalidnumber;
             data.BloodType = bloadtype;
             data.OrganType = organtype;
             _db.Doners.Update(data);

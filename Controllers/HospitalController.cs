@@ -3,6 +3,7 @@ using Hope_for_Organ_Donation.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hope_for_Organ_Donation.Controllers
 {
@@ -10,41 +11,53 @@ namespace Hope_for_Organ_Donation.Controllers
     [ApiController]
     public class HospitalController : ControllerBase
     {
-        private readonly AppDbContext _db;
-        private readonly PasswordHasher<Hospital> _passwordHasher;
-        public HospitalController(AppDbContext db)
+        private readonly AppDbContext _dbContext;
+
+        private readonly UserManager<AppUser> _userManager;
+        public HospitalController(AppDbContext dbContext, UserManager<AppUser> userManager)
         {
-            _db = db;
-            _passwordHasher = new PasswordHasher<Hospital>();
+            _dbContext = dbContext;
+
+            _userManager = userManager;
         }
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] Hospital hospital)
+        [HttpPost("Register-Hospital")]
+        public async Task<IActionResult> RegisterHospital(RegisterHospitalDto user)
         {
-            if (_db.Hospitals.Any(h => h.Email == hospital.Email))
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            
+            AppUser newUser = new()
             {
-                return BadRequest("Email already in use.");
-            }
-            hospital.Password = _passwordHasher.HashPassword(hospital, hospital.Password);
-            await _db.Hospitals.AddAsync(hospital);
-            await _db.SaveChangesAsync();
-            return Ok("Hospital registered successfully.");
+                UserName = user.HospitalName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                FullName = user.HospitalName
+            };
+
+            var result = await _userManager.CreateAsync(newUser, user.Password);
+
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
+
+            await _userManager.AddToRoleAsync(newUser, "Hospital");
+
+            var hospital = new Hospital
+            {
+                HospitalName = user.HospitalName,
+                LicenseNumber = user.LicenseNumber,
+                Address = user.Address,
+                City = user.City,
+                UserId = newUser.Id
+            };
+
+            _dbContext.Hospitals.Add(hospital);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok("Hospital account created successfully");
+        }
+
+
 
         }
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(string email, string password)
-        {
-            var hospital = _db.Hospitals.FirstOrDefault(h => h.Email == email);
-            if (hospital == null)
-            {
-                return NotFound("Hospital not found.");
-            }
-            var result = _passwordHasher.VerifyHashedPassword(hospital, hospital.Password, password);
-            if (result == PasswordVerificationResult.Failed)
-            {
-                return Unauthorized("Invalid credentials.");
-            }
-            return Ok("Login successful.");
-        }
-
-    }
 }
