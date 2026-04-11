@@ -1,0 +1,732 @@
+[
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/Login/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.AccountController",
+    "Method": "Register",
+    "RelativePath": "api/Account/Register/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "Hope_for_Organ_Donation.Model.dtoNewsUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonationController",
+    "Method": "Getdonation",
+    "RelativePath": "api/Donation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonationController",
+    "Method": "Adddonation",
+    "RelativePath": "api/Donation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DonationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "HospitalId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.CreatedAt",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.User",
+        "Type": "Hope_for_Organ_Donation.Model.AppUser",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.LicenseNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.HospitalName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.City",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.IsApproved",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Hospital.Donation",
+        "Type": "System.Collections.Generic.ICollection\u00601[[Hope_for_Organ_Donation.Model.Donation, Hope for Organ Donation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.DonerId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.FullName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.CreatedAt",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.User",
+        "Type": "Hope_for_Organ_Donation.Model.AppUser",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.LicenseNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.HospitalName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.City",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.IsApproved",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Hospital.Donation",
+        "Type": "System.Collections.Generic.ICollection\u00601[[Hope_for_Organ_Donation.Model.Donation, Hope for Organ Donation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Donor",
+        "Type": "Hope_for_Organ_Donation.Model.Doner",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.NormalizedUserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.NormalizedEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.EmailConfirmed",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.PasswordHash",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.SecurityStamp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.ConcurrencyStamp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.PhoneNumberConfirmed",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.TwoFactorEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.LockoutEnd",
+        "Type": "System.Nullable\u00601[[System.DateTimeOffset, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.LockoutEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.User.AccessFailedCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.BloodType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.NationalIDNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Donor.OrganType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.NormalizedUserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.NormalizedEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.EmailConfirmed",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.PasswordHash",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.SecurityStamp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.ConcurrencyStamp",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.PhoneNumberConfirmed",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.TwoFactorEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.LockoutEnd",
+        "Type": "System.Nullable\u00601[[System.DateTimeOffset, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.LockoutEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.User.AccessFailedCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.LicenseNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.HospitalName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.City",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.IsApproved",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hospital.Donation",
+        "Type": "System.Collections.Generic.ICollection\u00601[[Hope_for_Organ_Donation.Model.Donation, Hope for Organ Donation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PatientName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PatientAge",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrganType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BloodType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NeededBeforeDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NationalIDNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RegistrationDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonationController",
+    "Method": "Updatedoner",
+    "RelativePath": "api/Donation",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donationid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "bloadtype",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "phonenumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "adress",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nationalidnumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "organtype",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonationController",
+    "Method": "Getdoner",
+    "RelativePath": "api/Donation/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonationController",
+    "Method": "UpdatedonationPatch",
+    "RelativePath": "api/Donation/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donation",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonationController",
+    "Method": "Deletedonation",
+    "RelativePath": "api/Donation/id",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Getdoner",
+    "RelativePath": "api/DonerControllers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Adddoner",
+    "RelativePath": "api/DonerControllers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doner",
+        "Type": "Hope_for_Organ_Donation.Model.Doner",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Updatedoner",
+    "RelativePath": "api/DonerControllers",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donerid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "bloadtype",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "phonenumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "adress",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nationalidnumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "organtype",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Getdoner",
+    "RelativePath": "api/DonerControllers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "UpdatedonerPatch",
+    "RelativePath": "api/DonerControllers/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "doner",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerControllers",
+    "Method": "Deletedoner",
+    "RelativePath": "api/DonerControllers/id",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerRegisterController",
+    "Method": "Login",
+    "RelativePath": "api/DonerRegister/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.DonerRegisterController",
+    "Method": "Register",
+    "RelativePath": "api/DonerRegister/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donerRegister",
+        "Type": "Hope_for_Organ_Donation.Model.DonerRegister",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Hope_for_Organ_Donation.Controllers.HospitalController",
+    "Method": "RegisterHospital",
+    "RelativePath": "api/Hospital/Register-Hospital",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "Hope_for_Organ_Donation.Model.RegisterHospitalDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,3 +1,0 @@
-*.cs text eol=crlf
-*.json text eol=lf
-*.txt text
