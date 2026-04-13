@@ -17,8 +17,7 @@ namespace Hope_for_Organ_Donation.Model
         [Required]
         public string City { get; set; } = null!;
         public bool IsApproved { get; set; } = false;
-        [Required]
-        public ICollection<Donation> Donation { get; set; } = new List<Donation>();
+        public ICollection<Recipient> Recipients { get; set; } = new List<Recipient>();
 
 
 

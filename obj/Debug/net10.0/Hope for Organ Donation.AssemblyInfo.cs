@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hope for Organ Donation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e404d9d3238b5e7b5a06c00e077bf72274ceedc9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc93c6017d7793d586e0fc6e148c891e8b5a31c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hope for Organ Donation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hope for Organ Donation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Hope for Organ Donation API",
-    "version": "v1"
+    "title": "Hope for Organ Donation",
+    "version": "1.0"
   },
   "paths": {
     "/api/Account/Register/register": {
@@ -12,11 +12,6 @@
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/dtoNewsUser"
-              }
-            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/dtoNewsUser"
@@ -69,557 +64,227 @@
         }
       }
     },
-    "/api/Donation": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/register": {
+      "post": {
+        "tags": [
+          "Donor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDonorDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDonorDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDonorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/complete-profile": {
+      "put": {
+        "tags": [
+          "Donor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDonorProfileDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDonorProfileDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDonorProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/profile": {
       "get": {
         "tags": [
-          "Donation"
+          "Donor"
         ],
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Donor/update": {
+      "put": {
+        "tags": [
+          "Donor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDonorDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDonorDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDonorDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/donate": {
       "post": {
         "tags": [
-          "Donation"
+          "Donor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDonationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDonationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDonationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/my-donations": {
+      "get": {
+        "tags": [
+          "Donor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/cancel-donation/{id}": {
+      "delete": {
+        "tags": [
+          "Donor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Donor/upload-medical-report": {
+      "post": {
+        "tags": [
+          "Donor"
         ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
-                "required": [
-                  "Address",
-                  "Hospital.Address",
-                  "Hospital.City",
-                  "Hospital.Donation",
-                  "Hospital.HospitalName",
-                  "Hospital.LicenseNumber",
-                  "Hospital.User.Donor.Address",
-                  "Hospital.User.Donor.BloodType",
-                  "Hospital.User.Donor.NationalIDNumber",
-                  "Hospital.User.Donor.OrganType",
-                  "Hospital.User.Donor.User.Hospital.Address",
-                  "Hospital.User.Donor.User.Hospital.City",
-                  "Hospital.User.Donor.User.Hospital.Donation",
-                  "Hospital.User.Donor.User.Hospital.HospitalName",
-                  "Hospital.User.Donor.User.Hospital.LicenseNumber",
-                  "Hospital.User.Hospital.Address",
-                  "Hospital.User.Hospital.City",
-                  "Hospital.User.Hospital.Donation",
-                  "Hospital.User.Hospital.HospitalName",
-                  "Hospital.User.Hospital.LicenseNumber",
-                  "NationalIDNumber",
-                  "OrganType",
-                  "PatientName",
-                  "PhoneNumber",
-                  "Status"
-                ],
                 "type": "object",
                 "properties": {
-                  "DonationId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "HospitalId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.Id": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.User.FullName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.CreatedAt": {
+                  "file": {
                     "type": "string",
-                    "format": "date-time"
-                  },
-                  "Hospital.User.Hospital.Id": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.User.Hospital.User": {
-                    "$ref": "#/components/schemas/AppUser"
-                  },
-                  "Hospital.User.Hospital.UserId": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Hospital.LicenseNumber": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Hospital.HospitalName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Hospital.Address": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Hospital.City": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Hospital.IsApproved": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.Hospital.Donation": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Donation"
-                    }
-                  },
-                  "Hospital.User.Donor.DonerId": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.User.Donor.UserId": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.FullName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.CreatedAt": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "Hospital.User.Donor.User.Hospital.Id": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.User.Donor.User.Hospital.User": {
-                    "$ref": "#/components/schemas/AppUser"
-                  },
-                  "Hospital.User.Donor.User.Hospital.UserId": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.Hospital.LicenseNumber": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.Hospital.HospitalName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.Hospital.Address": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.Hospital.City": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.Hospital.IsApproved": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.Donor.User.Hospital.Donation": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Donation"
-                    }
-                  },
-                  "Hospital.User.Donor.User.Donor": {
-                    "$ref": "#/components/schemas/Doner"
-                  },
-                  "Hospital.User.Donor.User.Id": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.UserName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.NormalizedUserName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.Email": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.NormalizedEmail": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.EmailConfirmed": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.Donor.User.PasswordHash": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.SecurityStamp": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.ConcurrencyStamp": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.PhoneNumber": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.User.PhoneNumberConfirmed": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.Donor.User.TwoFactorEnabled": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.Donor.User.LockoutEnd": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "Hospital.User.Donor.User.LockoutEnabled": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.Donor.User.AccessFailedCount": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.User.Donor.BloodType": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.Address": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.NationalIDNumber": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Donor.OrganType": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Id": {
-                    "type": "string"
-                  },
-                  "Hospital.User.UserName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.NormalizedUserName": {
-                    "type": "string"
-                  },
-                  "Hospital.User.Email": {
-                    "type": "string"
-                  },
-                  "Hospital.User.NormalizedEmail": {
-                    "type": "string"
-                  },
-                  "Hospital.User.EmailConfirmed": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.PasswordHash": {
-                    "type": "string"
-                  },
-                  "Hospital.User.SecurityStamp": {
-                    "type": "string"
-                  },
-                  "Hospital.User.ConcurrencyStamp": {
-                    "type": "string"
-                  },
-                  "Hospital.User.PhoneNumber": {
-                    "type": "string"
-                  },
-                  "Hospital.User.PhoneNumberConfirmed": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.TwoFactorEnabled": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.LockoutEnd": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "Hospital.User.LockoutEnabled": {
-                    "type": "boolean"
-                  },
-                  "Hospital.User.AccessFailedCount": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "Hospital.UserId": {
-                    "type": "string"
-                  },
-                  "Hospital.LicenseNumber": {
-                    "type": "string"
-                  },
-                  "Hospital.HospitalName": {
-                    "type": "string"
-                  },
-                  "Hospital.Address": {
-                    "type": "string"
-                  },
-                  "Hospital.City": {
-                    "type": "string"
-                  },
-                  "Hospital.IsApproved": {
-                    "type": "boolean"
-                  },
-                  "Hospital.Donation": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Donation"
-                    }
-                  },
-                  "PatientName": {
-                    "maxLength": 50,
-                    "type": "string"
-                  },
-                  "PatientAge": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
-                  "OrganType": {
-                    "maxLength": 50,
-                    "type": "string"
-                  },
-                  "BloodType": {
-                    "maxLength": 10,
-                    "type": "string"
-                  },
-                  "NeededBeforeDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  },
-                  "Address": {
-                    "type": "string"
-                  },
-                  "NationalIDNumber": {
-                    "type": "string"
-                  },
-                  "RegistrationDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "Status": {
-                    "maxLength": 20,
-                    "type": "string"
+                    "format": "binary"
                   }
                 }
               },
               "encoding": {
-                "DonationId": {
-                  "style": "form"
-                },
-                "HospitalId": {
-                  "style": "form"
-                },
-                "Hospital.Id": {
-                  "style": "form"
-                },
-                "Hospital.User.FullName": {
-                  "style": "form"
-                },
-                "Hospital.User.CreatedAt": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.Id": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.User": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.UserId": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.LicenseNumber": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.HospitalName": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.Address": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.City": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.IsApproved": {
-                  "style": "form"
-                },
-                "Hospital.User.Hospital.Donation": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.DonerId": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.UserId": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.FullName": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.CreatedAt": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.Id": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.User": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.UserId": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.LicenseNumber": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.HospitalName": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.Address": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.City": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.IsApproved": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Hospital.Donation": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Donor": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Id": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.UserName": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.NormalizedUserName": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.Email": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.NormalizedEmail": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.EmailConfirmed": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.PasswordHash": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.SecurityStamp": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.ConcurrencyStamp": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.PhoneNumber": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.PhoneNumberConfirmed": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.TwoFactorEnabled": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.LockoutEnd": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.LockoutEnabled": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.User.AccessFailedCount": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.BloodType": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.Address": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.NationalIDNumber": {
-                  "style": "form"
-                },
-                "Hospital.User.Donor.OrganType": {
-                  "style": "form"
-                },
-                "Hospital.User.Id": {
-                  "style": "form"
-                },
-                "Hospital.User.UserName": {
-                  "style": "form"
-                },
-                "Hospital.User.NormalizedUserName": {
-                  "style": "form"
-                },
-                "Hospital.User.Email": {
-                  "style": "form"
-                },
-                "Hospital.User.NormalizedEmail": {
-                  "style": "form"
-                },
-                "Hospital.User.EmailConfirmed": {
-                  "style": "form"
-                },
-                "Hospital.User.PasswordHash": {
-                  "style": "form"
-                },
-                "Hospital.User.SecurityStamp": {
-                  "style": "form"
-                },
-                "Hospital.User.ConcurrencyStamp": {
-                  "style": "form"
-                },
-                "Hospital.User.PhoneNumber": {
-                  "style": "form"
-                },
-                "Hospital.User.PhoneNumberConfirmed": {
-                  "style": "form"
-                },
-                "Hospital.User.TwoFactorEnabled": {
-                  "style": "form"
-                },
-                "Hospital.User.LockoutEnd": {
-                  "style": "form"
-                },
-                "Hospital.User.LockoutEnabled": {
-                  "style": "form"
-                },
-                "Hospital.User.AccessFailedCount": {
-                  "style": "form"
-                },
-                "Hospital.UserId": {
-                  "style": "form"
-                },
-                "Hospital.LicenseNumber": {
-                  "style": "form"
-                },
-                "Hospital.HospitalName": {
-                  "style": "form"
-                },
-                "Hospital.Address": {
-                  "style": "form"
-                },
-                "Hospital.City": {
-                  "style": "form"
-                },
-                "Hospital.IsApproved": {
-                  "style": "form"
-                },
-                "Hospital.Donation": {
-                  "style": "form"
-                },
-                "PatientName": {
-                  "style": "form"
-                },
-                "PatientAge": {
-                  "style": "form"
-                },
-                "OrganType": {
-                  "style": "form"
-                },
-                "BloodType": {
-                  "style": "form"
-                },
-                "NeededBeforeDate": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                },
-                "Address": {
-                  "style": "form"
-                },
-                "NationalIDNumber": {
-                  "style": "form"
-                },
-                "RegistrationDate": {
-                  "style": "form"
-                },
-                "Status": {
+                "file": {
                   "style": "form"
                 }
               }
@@ -631,139 +296,28 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Donor/update-profile": {
       "put": {
         "tags": [
-          "Donation"
-        ],
-        "parameters": [
-          {
-            "name": "donationid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "bloadtype",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "phonenumber",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "adress",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "nationalidnumber",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "organtype",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Donation/{id}": {
-      "get": {
-        "tags": [
-          "Donation"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Donation"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+          "Donor"
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            },
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
+                "$ref": "#/components/schemas/UpdateDonorProfileDto"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
+                "$ref": "#/components/schemas/UpdateDonorProfileDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
+                "$ref": "#/components/schemas/UpdateDonorProfileDto"
               }
             }
           }
@@ -775,314 +329,13 @@
         }
       }
     },
-    "/api/Donation/id": {
-      "delete": {
-        "tags": [
-          "Donation"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/DonerControllers": {
-      "get": {
-        "tags": [
-          "DonerControllers"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "DonerControllers"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doner"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doner"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doner"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Doner"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "DonerControllers"
-        ],
-        "parameters": [
-          {
-            "name": "donerid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "bloadtype",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "phonenumber",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "adress",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "nationalidnumber",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "organtype",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/DonerControllers/{id}": {
-      "get": {
-        "tags": [
-          "DonerControllers"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "DonerControllers"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/DonerControllers/id": {
-      "delete": {
-        "tags": [
-          "DonerControllers"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/DonerRegister/register": {
-      "post": {
-        "tags": [
-          "DonerRegister"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/DonerRegister"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DonerRegister"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DonerRegister"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/DonerRegister"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/DonerRegister/login": {
-      "post": {
-        "tags": [
-          "DonerRegister"
-        ],
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Hospital/Register-Hospital": {
+    "/api/Hospital/register": {
       "post": {
         "tags": [
           "Hospital"
         ],
         "requestBody": {
           "content": {
-            "application/json-patch+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterHospitalDto"
-              }
-            },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RegisterHospitalDto"
@@ -1100,6 +353,93 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Hospital/add-recipient": {
+      "post": {
+        "tags": [
+          "Hospital"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipientDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipientDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecipientDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Hospital/my-recipients": {
+      "get": {
+        "tags": [
+          "Hospital"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Hospital/available-donations": {
+      "get": {
+        "tags": [
+          "Hospital"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Hospital/match/{donationId}/{recipientId}": {
+      "put": {
+        "tags": [
+          "Hospital"
+        ],
+        "parameters": [
+          {
+            "name": "donationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "recipientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1110,185 +450,12 @@
   },
   "components": {
     "schemas": {
-      "AppUser": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "normalizedUserName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "normalizedEmail": {
-            "type": "string",
-            "nullable": true
-          },
-          "emailConfirmed": {
-            "type": "boolean"
-          },
-          "passwordHash": {
-            "type": "string",
-            "nullable": true
-          },
-          "securityStamp": {
-            "type": "string",
-            "nullable": true
-          },
-          "concurrencyStamp": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumberConfirmed": {
-            "type": "boolean"
-          },
-          "twoFactorEnabled": {
-            "type": "boolean"
-          },
-          "lockoutEnd": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "lockoutEnabled": {
-            "type": "boolean"
-          },
-          "accessFailedCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fullName": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "hospital": {
-            "$ref": "#/components/schemas/Hospital"
-          },
-          "donor": {
-            "$ref": "#/components/schemas/Doner"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Donation": {
+      "CreateDonationDto": {
         "required": [
-          "address",
-          "hospital",
-          "nationalIDNumber",
-          "organType",
-          "patientName",
-          "phoneNumber",
-          "status"
-        ],
-        "type": "object",
-        "properties": {
-          "donationId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "hospitalId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "hospital": {
-            "$ref": "#/components/schemas/Hospital"
-          },
-          "patientName": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "patientAge": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "organType": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "bloodType": {
-            "maxLength": 10,
-            "type": "string",
-            "nullable": true
-          },
-          "neededBeforeDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "phoneNumber": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "address": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "nationalIDNumber": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "registrationDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "status": {
-            "maxLength": 20,
-            "minLength": 1,
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Doner": {
-        "required": [
-          "address",
-          "bloodType",
-          "nationalIDNumber",
           "organType"
         ],
         "type": "object",
         "properties": {
-          "donerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userId": {
-            "type": "string",
-            "nullable": true
-          },
-          "user": {
-            "$ref": "#/components/schemas/AppUser"
-          },
-          "bloodType": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "address": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "nationalIDNumber": {
-            "minLength": 1,
-            "type": "string"
-          },
           "organType": {
             "minLength": 1,
             "type": "string"
@@ -1296,22 +463,40 @@
         },
         "additionalProperties": false
       },
-      "DonerRegister": {
+      "CreateRecipientDto": {
+        "required": [
+          "bloodType",
+          "fullName",
+          "neededOrgan"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "bloodType": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "neededOrgan": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDto": {
         "required": [
           "email",
-          "name",
           "password"
         ],
         "type": "object",
         "properties": {
-          "donerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "minLength": 1,
-            "type": "string"
-          },
           "email": {
             "minLength": 1,
             "type": "string",
@@ -1324,32 +509,65 @@
         },
         "additionalProperties": false
       },
-      "Hospital": {
+      "RegisterDonorDto": {
         "required": [
-          "address",
-          "city",
-          "donation",
-          "hospitalName",
-          "licenseNumber"
+          "email",
+          "fullName",
+          "password",
+          "phoneNumber"
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/AppUser"
-          },
-          "userId": {
+          "email": {
+            "minLength": 1,
             "type": "string",
-            "nullable": true
+            "format": "email"
           },
-          "licenseNumber": {
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterHospitalDto": {
+        "required": [
+          "address",
+          "city",
+          "email",
+          "hospitalName",
+          "licenseNumber",
+          "password",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
             "minLength": 1,
             "type": "string"
           },
           "hospitalName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "licenseNumber": {
             "minLength": 1,
             "type": "string"
           },
@@ -1360,76 +578,18 @@
           "city": {
             "minLength": 1,
             "type": "string"
-          },
-          "isApproved": {
-            "type": "boolean"
-          },
-          "donation": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Donation"
-            }
           }
         },
         "additionalProperties": false
       },
-      "Operation": {
+      "UpdateDonorDto": {
         "type": "object",
         "properties": {
-          "operationType": {
-            "$ref": "#/components/schemas/OperationType"
-          },
-          "path": {
-            "type": "string",
-            "nullable": true
-          },
-          "op": {
-            "type": "string",
-            "nullable": true
-          },
-          "from": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "OperationType": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "RegisterHospitalDto": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
           "phoneNumber": {
             "type": "string",
             "nullable": true
           },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "hospitalName": {
-            "type": "string",
-            "nullable": true
-          },
-          "licenseNumber": {
+          "bloodType": {
             "type": "string",
             "nullable": true
           },
@@ -1437,8 +597,58 @@
             "type": "string",
             "nullable": true
           },
-          "city": {
+          "selectedOrgans": {
             "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationalIDNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "medicalReportUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateDonorProfileDto": {
+        "type": "object",
+        "properties": {
+          "bloodType": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "selectedOrgans": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationalIDNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "medicalReportUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasSignedConsent": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isDonationActive": {
+            "type": "boolean",
             "nullable": true
           }
         },
@@ -1473,6 +683,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter your token here",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

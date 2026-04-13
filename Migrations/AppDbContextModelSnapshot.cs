@@ -96,59 +96,36 @@ namespace Hope_for_Organ_Donation.Migrations
 
             modelBuilder.Entity("Hope_for_Organ_Donation.Model.Donation", b =>
                 {
-                    b.Property<int>("DonationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DonationId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BloodType")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NationalIDNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("NeededBeforeDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("DonorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("OrganType")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("PatientAge")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PatientName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RegistrationDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("RecipientId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DonationId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("HospitalId");
+                    b.HasIndex("DonorId");
+
+                    b.HasIndex("RecipientId")
+                        .IsUnique()
+                        .HasFilter("[RecipientId] IS NOT NULL");
 
                     b.ToTable("Donations");
                 });
@@ -165,16 +142,42 @@ namespace Hope_for_Organ_Donation.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("BirthDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("BloodType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasSignedConsent")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDonationActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MedicalReportUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NationalIDNumber")
                         .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OrganType")
-                        .IsRequired()
+                    b.Property<string>("SelectedOrgans")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -187,31 +190,6 @@ namespace Hope_for_Organ_Donation.Migrations
                         .IsUnique();
 
                     b.ToTable("Doners");
-                });
-
-            modelBuilder.Entity("Hope_for_Organ_Donation.Model.DonerRegister", b =>
-                {
-                    b.Property<int>("DonerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DonerId"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DonerId");
-
-                    b.ToTable("DonerRegisters");
                 });
 
             modelBuilder.Entity("Hope_for_Organ_Donation.Model.Hospital", b =>
@@ -254,6 +232,46 @@ namespace Hope_for_Organ_Donation.Migrations
                         .IsUnique();
 
                     b.ToTable("Hospitals");
+                });
+
+            modelBuilder.Entity("Hope_for_Organ_Donation.Model.Recipient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BloodType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HospitalId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NeededOrgan")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RegisteredAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HospitalId");
+
+                    b.ToTable("Recipients");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -391,13 +409,19 @@ namespace Hope_for_Organ_Donation.Migrations
 
             modelBuilder.Entity("Hope_for_Organ_Donation.Model.Donation", b =>
                 {
-                    b.HasOne("Hope_for_Organ_Donation.Model.Hospital", "Hospital")
-                        .WithMany("Donation")
-                        .HasForeignKey("HospitalId")
+                    b.HasOne("Hope_for_Organ_Donation.Model.Doner", "Donor")
+                        .WithMany("Donations")
+                        .HasForeignKey("DonorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Hospital");
+                    b.HasOne("Hope_for_Organ_Donation.Model.Recipient", "Recipient")
+                        .WithOne()
+                        .HasForeignKey("Hope_for_Organ_Donation.Model.Donation", "RecipientId");
+
+                    b.Navigation("Donor");
+
+                    b.Navigation("Recipient");
                 });
 
             modelBuilder.Entity("Hope_for_Organ_Donation.Model.Doner", b =>
@@ -420,6 +444,17 @@ namespace Hope_for_Organ_Donation.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Hope_for_Organ_Donation.Model.Recipient", b =>
+                {
+                    b.HasOne("Hope_for_Organ_Donation.Model.Hospital", "Hospital")
+                        .WithMany("Recipients")
+                        .HasForeignKey("HospitalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hospital");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -480,9 +515,14 @@ namespace Hope_for_Organ_Donation.Migrations
                     b.Navigation("Hospital");
                 });
 
+            modelBuilder.Entity("Hope_for_Organ_Donation.Model.Doner", b =>
+                {
+                    b.Navigation("Donations");
+                });
+
             modelBuilder.Entity("Hope_for_Organ_Donation.Model.Hospital", b =>
                 {
-                    b.Navigation("Donation");
+                    b.Navigation("Recipients");
                 });
 #pragma warning restore 612, 618
         }

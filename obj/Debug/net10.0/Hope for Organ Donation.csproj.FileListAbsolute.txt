@@ -164,3 +164,4 @@ C:\Users\HP\Desktop\Hope for Organ Donation\Hope for Organ Donation\obj\Debug\ne
 C:\Users\HP\Desktop\Hope for Organ Donation\Hope for Organ Donation\obj\Debug\net10.0\Hope for Organ Donation.sourcelink.json
 C:\Users\HP\Desktop\Hope for Organ Donation\Hope for Organ Donation\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\HP\Desktop\Hope for Organ Donation\Hope for Organ Donation\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Users\HP\Desktop\Hope for Organ Donation\Hope for Organ Donation\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
